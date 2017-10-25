@@ -6,7 +6,7 @@ app.get('/', function(req, res){
     res.send('<h1>Welcome Realtime Server</h1>');
 });
 
-io.listen(3000, function() {
+io.listen(3001, function() {
     console.log('Server listening at http://localhost:80/');
 });
 

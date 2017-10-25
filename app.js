@@ -43,19 +43,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'pxr970708',
-    database:'dbHomework'
-});
-connection.connect();
-connection.query('select * from `clothes`', function(err, rows, fields) {
+const config = require('./config.js');
+config.connect();
+config.query('select * from `user`', function(err, rows, fields) {
     if (err) throw err;
     console.log('查询结果为: ', rows);
 });
 //关闭连接
-connection.end();
+config.end();
+
 
 module.exports = app;

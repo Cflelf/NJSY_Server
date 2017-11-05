@@ -39,7 +39,6 @@ router.post('/enterRoom', function (req, res, next) {
                     }
                 }
             }
-            console.log(playerNum);
             if (result[0].roomLimit == playerNum) {
                 returnDic.ResultMessage = 2;
                 res.contentType('json');
@@ -75,11 +74,10 @@ router.post('/enterRoom', function (req, res, next) {
 router.post('/exitRoom',function (req,res,next) {//req:{"roomId","position"}
     var player = {};
     var returnDic = {};
-    console.log(req.body);
     var tasks = [function (callback) {
         config.query('select * from roomList where roomId = ?', req.body.roomId, function (err, result) {
             players = result[0].playerList.split(";");
-            players[req.body.position-1] = (req.body.position)+":";
+            players[req.body.position] = (req.body.position+1)+":";
             callback(err);
         });
     }, function (callback) {

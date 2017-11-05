@@ -1,0 +1,8 @@
+enum ResultMessage{
+   0    login success
+   1    login failure , account or password wrong
+   2    room filled
+   3    enter room success
+   4    leave room success
+   5    leave room failure
+}
